@@ -1,0 +1,1 @@
+{"version":3,"file":"company.model.js","sourceRoot":"","sources":["../../src/models/company.model.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM,UAAU,CAAC;AAIzC,MAAM,aAAa,GAAqB,IAAI,MAAM,CAAC;IAC/C,IAAI,EAAE;QACF,IAAI,EAAE,MAAM;QACZ,QAAQ,EAAE,KAAK;KAClB;CAEJ,CAAC,CAAA;AAGF,MAAM,OAAO,GAAG,KAAK,CAAW,SAAS,EAAE,aAAa,CAAC,CAAC;AAE1D,eAAe,OAAO,CAAC"}
