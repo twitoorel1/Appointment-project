@@ -8,9 +8,11 @@ import {
   DownOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme, Dropdown, Space } from "antd";
-import Image from "next/image";
-import { useState } from "react";
 const { Header, Content, Footer, Sider } = Layout;
+
+import Image from "next/image";
+
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function getItem(label, key, icon, children) {
@@ -22,13 +24,13 @@ function getItem(label, key, icon, children) {
   };
 }
 const items2 = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
+  getItem("<a href=""/>, "1", <PieChartOutlined />),
+  getItem("מעומדים", "sub1", <UserOutlined />, [
+    getItem("רשימת מעומדים", "3"),
+    getItem("צור מעומד חדש", "4"),
     getItem("Alex", "5"),
   ]),
+  getItem("test", "2", <DesktopOutlined />),
   getItem("Team", "sub2", <TeamOutlined />, [
     getItem("Team 1", "6"),
     getItem("Team 2", "8"),
@@ -59,7 +61,6 @@ const Navbar = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
   const { user } = useSelector((state) => state.auth);
 
 
