@@ -11,7 +11,7 @@ import { Layout, Menu, theme, Dropdown, Space } from "antd";
 import Image from "next/image";
 import { useState } from "react";
 const { Header, Content, Footer, Sider } = Layout;
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function getItem(label, key, icon, children) {
   return {
@@ -61,6 +61,7 @@ const Navbar = () => {
   } = theme.useToken();
 
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
 
   return (

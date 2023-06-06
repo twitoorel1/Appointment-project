@@ -22,7 +22,8 @@ export default function Home() {
               Logout
             </Button>
             import { logoutByToken } from "@/redux/slices/authenticationSlice";
- const dispatch = useDispatch();
+``````  const dispatch = useDispatch();``````
+
 */}
 
   return (

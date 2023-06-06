@@ -3,17 +3,21 @@ import Layout from "@/layouts/Layouts";
 import { logoutByToken } from "@/redux/slices/authenticationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import Login from "./authentication/login";
-import { getCookie } from "@/utils/cookies";
+import { AuthLayout } from "@/layouts/AuthLayout"
 
 
 export default function Home() {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const router = useRouter();
-  const cookie = getCookie("ac-token")
 
-  {/* 
+
+  return (
+    <>
+      {isAuthenticated ? (
+        <Layout>
+          <section>
+            <h2>Welcome</h2>
             <Button
               className={`w-[100px] h-[50px]`}
               type="submit"
@@ -21,19 +25,10 @@ export default function Home() {
             >
               Logout
             </Button>
-            import { logoutByToken } from "@/redux/slices/authenticationSlice";
- const dispatch = useDispatch();
-*/}
-
-  return (
-    <>
-      {cookie ? (
-        <Layout>
-          <section>
           </section>
         </Layout>
       ) : (
-        <Login />
+        <AuthLayout></AuthLayout>
       )}
     </>
   );

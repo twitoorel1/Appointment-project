@@ -60,7 +60,8 @@ const Navbar = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const { user } = useSelector((state) => state.auth);
+  const { users } = useSelector((state) => state.auth);
+  console.log(user)
 
 
   return (
@@ -93,8 +94,8 @@ const Navbar = () => {
       <Layout>
         <Header style={{ padding: 0, backgroundColor: "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div className="p-5 ml-auto">
-            <Button className=" bg-white text-black p-5 hover:bg-[#d8e0e6]">שלום, {user.firstName} {user.lastName}
-              <DownOutlined /></Button>
+            { <Button className=" bg-white text-black p-5 hover:bg-[#d8e0e6]">שלום, {users.firstName} {users.lastName}
+              <DownOutlined /></Button> }
           </div>
         </Header>
         <Content style={{ margin: "16px" }}>

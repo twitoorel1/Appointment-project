@@ -61,6 +61,7 @@ const Navbar = () => {
   } = theme.useToken();
 
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
 
   return (

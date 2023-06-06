@@ -11,7 +11,8 @@ import { Layout, Menu, theme, Dropdown, Space } from "antd";
 import Image from "next/image";
 import { useState } from "react";
 const { Header, Content, Footer, Sider } = Layout;
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutByToken } from "@/redux/slices/authenticationSlice";
 
 function getItem(label, key, icon, children) {
   return {
@@ -61,6 +62,7 @@ const Navbar = () => {
   } = theme.useToken();
 
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
 
   return (
@@ -95,6 +97,13 @@ const Navbar = () => {
           <div className="p-5 ml-auto">
             <Button className=" bg-white text-black p-5 hover:bg-[#d8e0e6]">שלום, {user.firstName} {user.lastName}
               <DownOutlined /></Button>
+            <Button
+              className={`w-[100px] h-[50px]`}
+              type="submit"
+              onClick={() => dispatch(logoutByToken(user?._id))}
+            >
+              Logout
+            </Button>
           </div>
         </Header>
         <Content style={{ margin: "16px" }}>
