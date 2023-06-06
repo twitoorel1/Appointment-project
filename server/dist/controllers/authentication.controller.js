@@ -17,13 +17,13 @@ export function register(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield registerRequestSchema.validate(req.body, { abortEarly: false });
-            const { firstName, lastName, email, password, confirmPassword } = req.body;
+            const { firstName, lastName, email, username, password, confirmPassword } = req.body;
             if (password !== confirmPassword) {
                 return next(new BadRequestError("Passwords do not match"));
             }
             // if (!req.file) return next(new UnauthorizeError('Please upload an image')) // Stop For Dev Mode
             // const { path: image } = req.file
-            const user = yield User.create({ firstName, lastName, email, password });
+            const user = yield User.create({ firstName, lastName, email, username, password });
             res.status(201).send({ error: false, data: user });
         }
         catch (error) {
@@ -41,15 +41,15 @@ export function login(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield loginRequestSchema.validate(req.body, { abortEarly: false });
-            const { email, password } = req.body;
-            if (!email || !password)
-                return next(new BadRequestError('Please login with email and password'));
-            const user = yield User.findOne({ email });
+            const { username, password } = req.body;
+            if (!username || !password)
+                return next(new BadRequestError('Please login with Username and password'));
+            const user = yield User.findOne({ username });
             if (!user)
                 return next(new NotFoundError('User not found'));
             const isValidPassword = yield user.comparePassword(password);
             if (!isValidPassword)
-                return next(new UnauthorizeError("Password or Email is incorrect"));
+                return next(new UnauthorizeError("Password or Username is incorrect"));
             const accessToken = createAccessToken(user.id, user.role);
             const refreshToken = createRefreshToken(user.id, user.role);
             user.setJwtTokens(accessToken, refreshToken);

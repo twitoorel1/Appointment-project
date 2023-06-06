@@ -19,6 +19,11 @@ const userSchema = new Schema({
         unique: true,
         match: [emailRegex, "Invalid email address"],
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     firstName: {
         type: String,
         required: false,
