@@ -34,9 +34,12 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmitLogin)}>
+    <form
+      onSubmit={handleSubmit(onSubmitLogin)}
+      className="bg-gray-800 p-5 rounded-md shadow-sm"
+    >
       <h2 className="text-2xl lg:text-3xl text-center my-10">
-        <span className="font-bold">התחברות</span>
+        <span className="font-bold text-white">התחברות</span>
       </h2>
       <Input
         id="loginEmailInput"

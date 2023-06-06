@@ -41,7 +41,7 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmitRegister)}>
       <h2 className="text-2xl lg:text-3xl text-center my-10">
-        <span className="font-bold">הרשמה</span>
+        <span className="font-bold text-white">הרשמה</span>
       </h2>
       <Input
         id="registerEmailInput"
@@ -101,9 +101,6 @@ const RegisterForm = () => {
         <span className="mx-5">{errors.confirmPassword.message}</span>
       )}
 
-      {/* <div className="my-5">
-        <Link href={"/"} className="my-5" label="שכחת את הסיסמה?" />
-      </div> */}
       <Button label="הירשם" />
     </form>
   );
