@@ -12,7 +12,7 @@ const AuthLayout = ({ children }) => {
   }, [isAuthenticated]);
 
   return (
-    <section className="bg-gray-700 w-screen h-screen">
+    <section className="bg-[#25292D] w-screen h-screen">
       <main className="flex flex-col justify-center min-h-full mx-auto p-5 lg:w-1/4 lg:p-8">
         {children}
       </main>
