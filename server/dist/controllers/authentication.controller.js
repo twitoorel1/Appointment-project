@@ -19,7 +19,7 @@ export function register(req, res, next) {
             yield registerRequestSchema.validate(req.body, { abortEarly: false });
             const { firstName, lastName, email, username, password, confirmPassword } = req.body;
             if (password !== confirmPassword) {
-                return next(new BadRequestError("Passwords do not match"));
+                return next(new BadRequestError("סיסמה לא זהה"));
             }
             // if (!req.file) return next(new UnauthorizeError('Please upload an image')) // Stop For Dev Mode
             // const { path: image } = req.file
@@ -43,13 +43,13 @@ export function login(req, res, next) {
             yield loginRequestSchema.validate(req.body, { abortEarly: false });
             const { username, password } = req.body;
             if (!username || !password)
-                return next(new BadRequestError('Please login with Username and password'));
+                return next(new BadRequestError('היכנס עם שם משתמש וסיסמה'));
             const user = yield User.findOne({ username });
             if (!user)
                 return next(new NotFoundError('User not found'));
             const isValidPassword = yield user.comparePassword(password);
             if (!isValidPassword)
-                return next(new UnauthorizeError("Password or Username is incorrect"));
+                return next(new UnauthorizeError("שם משתמש או סיסמה שגויים"));
             const accessToken = createAccessToken(user.id, user.role);
             const refreshToken = createRefreshToken(user.id, user.role);
             user.setJwtTokens(accessToken, refreshToken);
