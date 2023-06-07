@@ -44,13 +44,16 @@ const RegisterForm = () => {
       <h2 className="text-2xl lg:text-3xl text-center my-10">
         <span className="font-bold text-white">הרשמה</span>
       </h2>
+
       <Input
         id="registerUsernameInput"
         type="text"
         placeholder="שם משתמש"
         register={{ ...register("username") }}
       />
-      {errors.username && <span className="mx-5">{errors.username.message}</span>}
+      {errors.username && (
+        <span className="mx-5">{errors.username.message}</span>
+      )}
 
       <Input
         id="registerEmailInput"

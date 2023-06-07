@@ -9,9 +9,10 @@ import {
   DesktopOutlined,
   TeamOutlined,
   DownOutlined,
-  AntDesignOutlined, RedditOutlined,
+  AntDesignOutlined,
+  RedditOutlined,
   EditOutlined,
-  LogoutOutlined
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme, Dropdown, Space, Button, Avatar } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
@@ -22,36 +23,35 @@ import { logoutByToken } from "@/redux/slices/authenticationSlice";
 import { removeCookie } from "@/utils/cookies";
 import { isMobile } from "@/utils/device";
 
-
-
-
 const items2 = [
   {
-    label: (<Link href={"/"}>לוח בקרה</Link>),
-    key: '1',
+    label: <Link href={"/"}>לוח בקרה</Link>,
+    key: "1",
     icon: <FileOutlined />,
   },
   {
     label: "מעומדים",
-    key: '2',
+    key: "2",
     icon: <PieChartOutlined />,
     children: [
       {
-        label: (<Link href={"/candidate"}>צור מעומד חדש</Link>),
-        key: '2.1',
+        label: <Link href={"/candidate"}>רשימת מעומדים</Link>,
+        key: "2.1",
         icon: <TeamOutlined />,
       },
-    ]
+      {
+        label: <Link href={"/candidate/create"}>צור מעומד חדש</Link>,
+        key: "2.2",
+        icon: <TeamOutlined />,
+      },
+    ],
   },
   {
-    label: (<Link href={"/users"}>משתמשים</Link>),
-    key: '3',
+    label: <Link href={"/users"}>משתמשים</Link>,
+    key: "3",
     icon: <UserOutlined />,
   },
 ];
-
-
-
 
 const Layouts = ({ children }) => {
   const dispatch = useDispatch();
@@ -62,23 +62,25 @@ const Layouts = ({ children }) => {
   } = theme.useToken();
   const { user } = useSelector((state) => state.auth);
 
-
-
   const items = [
     {
-      key: '1',
-      label: (<Link href="/account/profile">הפרופיל שלי</Link>),
-      icon: <RedditOutlined />
+      key: "1",
+      label: <Link href="/account/profile">הפרופיל שלי</Link>,
+      icon: <RedditOutlined />,
     },
     {
-      key: '2',
-      label: (<Link href="/account/editPassword">שנה סיסמה</Link>),
-      icon: <EditOutlined />
+      key: "2",
+      label: <Link href="/account/editPassword">שנה סיסמה</Link>,
+      icon: <EditOutlined />,
     },
     {
-      key: '3',
+      key: "3",
       danger: true,
-      label: (<Link href="" onClick={() => dispatch(logoutByToken(user?._id))}>התנתק</Link >),
+      label: (
+        <Link href="" onClick={() => dispatch(logoutByToken(user?._id))}>
+          התנתק
+        </Link>
+      ),
       icon: <LogoutOutlined />,
     },
   ];
@@ -91,13 +93,15 @@ const Layouts = ({ children }) => {
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
         >
-          <Image
-            className="mx-auto m-6 md:w-[130px]"
-            src="/logo/logo-white.png"
-            alt="Logo"
-            width={100}
-            height={100}
-          />
+          <Link href={"/"}>
+            <Image
+              className="mx-auto m-6 md:w-[130px]"
+              src="/logo/logo-white.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
+          </Link>
           <div className="demo-logo-vertical" />
           <Menu
             theme="dark"
@@ -108,21 +112,32 @@ const Layouts = ({ children }) => {
         </Sider>
 
         <Layout>
-          <Header style={{ padding: 0, backgroundColor: "transparent", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Header
+            style={{
+              padding: 0,
+              backgroundColor: "transparent",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <div className="p-5 ml-auto">
               <Dropdown menu={{ items }} placement="bottom" trigger={["click"]}>
                 <Button className="w-[10rem] h-[54px] rounded-full bg-white shadow-xl hover:bg-gray-100 border-none">
                   <Space className="flex items-center justify-evenly">
-
                     {/* <Image src="/avatar/avatar.jpg" alt="Avatar" width={100} height={100} className="rounded-full" /> */}
 
                     <Avatar
                       size={"large"}
                       style={{}}
-                      src={"/avatar/avatar.jpg"}
+                      src={`${
+                        user?.imgSRC ? user?.imgSRC : "/avatar/avatar.jpg"
+                      }`}
                     />
 
-                    <span>{user?.firstName} {user?.lastName}</span>
+                    <span>
+                      {user?.firstName} {user?.lastName}
+                    </span>
                     <DownOutlined />
                   </Space>
                 </Button>
@@ -131,14 +146,18 @@ const Layouts = ({ children }) => {
           </Header>
 
           <Content style={{ margin: "16px", padding: "10px" }}>
-            {isLoading ? <SkeletonLoader isLoading={isLoading} /> : children}
+            <main>
+              {isLoading ? <SkeletonLoader isLoading={isLoading} /> : children}
+            </main>
           </Content>
 
-          <Footer style={{ textAlign: "center" }}>© 2023</Footer>
+          <Footer style={{ textAlign: "left" }}>
+            © 2023 All rights reserved
+          </Footer>
         </Layout>
       </Layout>
     </AuthProvider>
-  )
-}
+  );
+};
 
-export default Layouts
+export default Layouts;

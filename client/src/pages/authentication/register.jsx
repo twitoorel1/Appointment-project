@@ -5,9 +5,7 @@ import RegisterForm from "@/components/authentication/RegisterForm";
 const login = () => {
   return (
     <AuthLayout>
-      <div>
-        <RegisterForm />
-      </div>
+      <RegisterForm />
     </AuthLayout>
   );
 };

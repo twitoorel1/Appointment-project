@@ -11,7 +11,6 @@ const Input = ({
   inputClassName,
   placeholder = "",
   required = true,
-  value = "",
   variant = "default",
 }) => {
   switch (variant) {
@@ -50,7 +49,6 @@ const Input = ({
         className={`block w-full p-3 text-gray-900 text-md rounded-md ${variant} ${inputClassName}`}
         placeholder={placeholder}
         required={required}
-        value={value}
       />
     </div>
   );

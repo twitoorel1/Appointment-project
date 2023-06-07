@@ -71,7 +71,7 @@ const Button = ({
       break;
 
     default:
-    // variant = "bg-[#42a5f5]";
+      variant = "bg-[#42a4f55e]";
   }
 
   return (
@@ -83,7 +83,7 @@ const Button = ({
     justify-center 
     place-items-center 
     mx-auto 
-    rounded-md 
+    rounded-full 
     py-2.5 
     px-2  
     my-2

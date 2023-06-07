@@ -6,6 +6,7 @@ import Loader from "./Loader";
 import SeparatorWrapper from "./SeparatorWrapper";
 import SkeletonLoader from "./SkeletonLoader";
 import Tooltip from "./Tooltip";
+import Select from "./Select";
 
 export {
   AppLogo,
@@ -16,4 +17,5 @@ export {
   SeparatorWrapper,
   SkeletonLoader,
   Tooltip,
+  Select,
 };

@@ -46,8 +46,9 @@ const LoginForm = () => {
         {(state) => (
           <form
             onSubmit={handleSubmit(onSubmitLogin)}
-            className={`${state === "entered" ? "scale-100" : "scale-0"
-              } transition-transform duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#1E1F1F] p-5 rounded-md shadow-sm md:w-[85vw] md:h-[45vw] w-screen h-screen flex flex-col items-center`}
+            className={`${
+              state === "entered" ? "scale-100" : "scale-0"
+            } transition-transform duration-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#1E1F1F] p-5 rounded-md shadow-sm md:w-[85vw] md:h-[45vw] w-screen h-screen flex flex-col items-center`}
           >
             <h2 className="text-[#42a5f5] font-bold text-2xl text-center my-10">
               בואינג <span className="text-[#ffffff]">הון אנושי בע"מ</span>
@@ -65,7 +66,9 @@ const LoginForm = () => {
                 register={{ ...register("username") }}
               />
               {errors.username && (
-                <span className="mx-5 text-[red]">{errors.username.message}</span>
+                <span className="mx-5 text-[red]">
+                  {errors.username.message}
+                </span>
               )}
 
               <Input
@@ -84,11 +87,7 @@ const LoginForm = () => {
                 </span>
               )}
 
-              <Button
-                type="submit"
-                className={`bg-[#42a4f55e] rounded-3xl border`}
-                label="התחבר"
-              />
+              <Button type="submit" className={`border`} label="התחבר" />
               {error && <span className="mx-5 text-[red]">{error}</span>}
             </div>
           </form>
